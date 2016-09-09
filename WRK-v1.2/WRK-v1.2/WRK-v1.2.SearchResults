@@ -1,0 +1,345 @@
+---- KeBugCheckEx Matches (344 in 78 files) ----
+Cc.h (base\ntos\cache):#define CcBugCheck(A,B,C) { KeBugCheckEx(CACHE_MANAGER, BugCheckFileId | __LINE__, A, B, C ); }
+Cmpbug.h (base\ntos\config):    KeBugCheckEx( (ULONG)Code, (ULONG_PTR)Parm1, (ULONG_PTR)Parm2, (ULONG_PTR)Parm3, (ULONG_PTR)Parm4 )
+Exinit.c (base\ntos\ex):        KeBugCheckEx(UNEXPECTED_INITIALIZATION_CALL, 3, InitializationPhase, 0, 0);
+Handle.c (base\ntos\ex):                    KeBugCheckEx(INVALID_KERNEL_HANDLE,
+Harderr.c (base\ntos\ex):        KeBugCheckEx (FATAL_UNHANDLED_HARD_ERROR,
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_HEADER,                                  \
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):        KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):        KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_CALLER, 8, KeGetCurrentIrql(), _PoolType, _NumberOfBytes);                                                           \
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_CALLER, 8, KeGetCurrentIrql(), _PoolType, _NumberOfBytes);                                                           \
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_CALLER, 9, KeGetCurrentIrql(), _PoolType, (ULONG_PTR)_P);                                                            \
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_CALLER, 9, KeGetCurrentIrql(), _PoolType, (ULONG_PTR)P);                                                             \
+Pool.c (base\ntos\ex):        KeBugCheckEx (BAD_POOL_CALLER, 6, __LINE__, (ULONG_PTR)_Entry, _Entry->Ulong1);                                                                 \
+Pool.c (base\ntos\ex):        KeBugCheckEx(BAD_POOL_CALLER, 1, (ULONG_PTR)_Entry, (ULONG_PTR)(*(PULONG)_Entry), 0);                                                           \
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_HEADER, 0xA, (ULONG_PTR) PAGE, __LINE__, (ULONG_PTR) P); \
+Pool.c (base\ntos\ex):                KeBugCheckEx (MUST_SUCCEED_POOL_EMPTY,
+Pool.c (base\ntos\ex):                KeBugCheckEx (MUST_SUCCEED_POOL_EMPTY,
+Pool.c (base\ntos\ex):                    KeBugCheckEx (MUST_SUCCEED_POOL_EMPTY,
+Pool.c (base\ntos\ex):                    KeBugCheckEx (MUST_SUCCEED_POOL_EMPTY,
+Pool.c (base\ntos\ex):                KeBugCheckEx (MUST_SUCCEED_POOL_EMPTY,
+Pool.c (base\ntos\ex):                KeBugCheckEx (MUST_SUCCEED_POOL_EMPTY,
+Pool.c (base\ntos\ex):        KeBugCheckEx (BAD_POOL_CALLER, 0, 0, PoolType, Tag);
+Pool.c (base\ntos\ex):            KeBugCheckEx (MUST_SUCCEED_POOL_EMPTY,
+Pool.c (base\ntos\ex):            KeBugCheckEx (BAD_POOL_CALLER,
+Pool.c (base\ntos\ex):                KeBugCheckEx (BAD_POOL_CALLER,
+Pool.c (base\ntos\ex):                KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):        KeBugCheckEx (BAD_POOL_CALLER,
+Pool.c (base\ntos\ex):        KeBugCheckEx (BAD_POOL_HEADER,
+Pool.c (base\ntos\ex):        KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):        KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):                KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):                KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):                KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):                KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Pool.c (base\ntos\ex):            KeBugCheckEx (DRIVER_VERIFIER_DETECTED_VIOLATION,
+Resource.c (base\ntos\ex):            KeBugCheckEx(RESOURCE_NOT_OWNED,
+Resource.c (base\ntos\ex):                KeBugCheckEx(RESOURCE_NOT_OWNED,
+Resource.c (base\ntos\ex):                       KeBugCheckEx(RESOURCE_NOT_OWNED,
+Resource.c (base\ntos\ex):                       KeBugCheckEx(RESOURCE_NOT_OWNED,
+Resource.c (base\ntos\ex):            KeBugCheckEx(RESOURCE_NOT_OWNED,
+Worker.c (base\ntos\ex):        KeBugCheckEx (WORKER_INVALID,
+Worker.c (base\ntos\ex):              KeBugCheckEx(WORKER_INVALID,
+Worker.c (base\ntos\ex):                KeBugCheckEx (WORKER_THREAD_RETURNED_AT_BAD_IRQL,
+Worker.c (base\ntos\ex):                KeBugCheckEx (IMPERSONATING_WORKER_THREAD,
+Fsfilter.c (base\ntos\fsrtl):                    KeBugCheckEx( FILE_SYSTEM, 0, 0, 0, 0 );
+Stackovf.c (base\ntos\fsrtl):            KeBugCheckEx(
+Ke.h (base\ntos\inc):#define KiBugCheck3(b,p1,p2,p3) KeBugCheckEx(b,p1,p2,p3,0)
+Ke.h (base\ntos\inc):KeBugCheckEx(
+Mac386.inc (base\ntos\inc):EXTRNP  _KeBugCheckEx,5
+Mac386.inc (base\ntos\inc):        stdCall _KeBugCheckEx,<SPIN_LOCK_NOT_OWNED,LockAddress,0,0,0>
+Initos.c (base\ntos\init):        KeBugCheckEx(MISMATCHED_HAL,
+Initos.c (base\ntos\init):                KeBugCheckEx(UP_DRIVER_ON_MP_SYSTEM,
+Initos.c (base\ntos\init):                        KeBugCheckEx(UP_DRIVER_ON_MP_SYSTEM,(ULONG_PTR)DataTableEntry->DllBase,0,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,STATUS_UNSUCCESSFUL,0,1,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,STATUS_UNSUCCESSFUL,0,2,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,STATUS_UNSUCCESSFUL,0,3,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SYMBOLIC_INITIALIZATION_FAILED,Status,0,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,Status,1,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,Status,2,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,Status,3,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,Status,4,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(PHASE1_INITIALIZATION_FAILED,Status,5,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SESSION1_INITIALIZATION_FAILED,Status,0,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SESSION2_INITIALIZATION_FAILED,Status,0,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SESSION2_INITIALIZATION_FAILED,
+Initos.c (base\ntos\init):        KeBugCheckEx(SESSION3_INITIALIZATION_FAILED,Status,0,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SESSION4_INITIALIZATION_FAILED,Status,0,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SYMBOLIC_INITIALIZATION_FAILED,status,1,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SYMBOLIC_INITIALIZATION_FAILED,status,2,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SYMBOLIC_INITIALIZATION_FAILED,status,3,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SYMBOLIC_INITIALIZATION_FAILED,status,3,1,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SYMBOLIC_INITIALIZATION_FAILED,status,4,0,0);
+Initos.c (base\ntos\init):        KeBugCheckEx(SYMBOLIC_INITIALIZATION_FAILED,status,5,0,0);
+Internal.c (base\ntos\io\iomgr):        KeBugCheckEx( UNMOUNTABLE_BOOT_VOLUME, (ULONG_PTR) DeviceObject, status, 0, 0 );
+Ioinit.c (base\ntos\io\iomgr):            KeBugCheckEx( NETWORK_BOOT_INITIALIZATION_FAILED,
+Ioinit.c (base\ntos\io\iomgr):            KeBugCheckEx( NETWORK_BOOT_INITIALIZATION_FAILED,
+Ioinit.c (base\ntos\io\iomgr):        KeBugCheckEx( INACCESSIBLE_BOOT_DEVICE,
+Iosubs.c (base\ntos\io\iomgr):            KeBugCheckEx( CANCEL_STATE_IN_COMPLETED_IRP, (ULONG_PTR) Irp, (ULONG_PTR) cancelRoutine, 0, 0 );
+Iosubs.c (base\ntos\io\iomgr):        KeBugCheckEx( MULTIPLE_IRP_COMPLETE_REQUESTS, (ULONG_PTR) Irp, __LINE__, 0, 0 );
+Iosubs.c (base\ntos\io\iomgr):        KeBugCheckEx( MULTIPLE_IRP_COMPLETE_REQUESTS, (ULONG_PTR) Irp, __LINE__, 0, 0 );
+Iosubs.c (base\ntos\io\iomgr):        KeBugCheckEx( INVALID_CANCEL_OF_FILE_OPEN, (ULONG_PTR) FileObject, (ULONG_PTR)DeviceObject, 0, 0 );
+Parse.c (base\ntos\io\iomgr):                KeBugCheckEx(DRIVER_RETURNED_STATUS_REPARSE_FOR_VOLUME_OPEN,
+Apcsup.c (base\ntos\ke):                    KeBugCheckEx(IRQL_UNEXPECTED_VALUE,
+Apcsup.c (base\ntos\ke):                        KeBugCheckEx(IRQL_UNEXPECTED_VALUE,
+Apcsup.c (base\ntos\ke):        KeBugCheckEx(INVALID_PROCESS_ATTACH_ATTEMPT,
+Balmgr.c (base\ntos\ke):        KeBugCheckEx(IRQL_NOT_LESS_OR_EQUAL, APC_LEVEL, OldIrql, 0, 0);
+Balmgr.c (base\ntos\ke):        KeBugCheckEx(IRQL_UNEXPECTED_VALUE, OldIrql, ExitIrql, 0, 0);
+Bugcheck.c (base\ntos\ke):KeBugCheckEx (
+Procobj.c (base\ntos\ke):            KeBugCheckEx(INVALID_PROCESS_ATTACH_ATTEMPT,
+Procobj.c (base\ntos\ke):        KeBugCheckEx(INVALID_PROCESS_ATTACH_ATTEMPT,
+Procobj.c (base\ntos\ke):        KeBugCheckEx(INVALID_PROCESS_ATTACH_ATTEMPT,
+Queueobj.c (base\ntos\ke):                KeBugCheckEx(INVALID_WORK_QUEUE_ITEM,
+Thredobj.c (base\ntos\ke):            KeBugCheckEx(THREAD_TERMINATE_HELD_MUTEX,
+Timerobj.c (base\ntos\ke):                KeBugCheckEx(TIMER_OR_DPC_INVALID,
+Timerobj.c (base\ntos\ke):                    KeBugCheckEx(TIMER_OR_DPC_INVALID,
+Timerobj.c (base\ntos\ke):                    KeBugCheckEx(TIMER_OR_DPC_INVALID,
+Allproc.c (base\ntos\ke\amd64):    KeBugCheckEx(PHASE1_INITIALIZATION_FAILED, 0, 0, 20, 0);
+Callback.c (base\ntos\ke\amd64):        KeBugCheckEx(KERNEL_EXPAND_STACK_ACTIVE, (ULONG64)Thread, 0, 0, 0);
+Callout.asm (base\ntos\ke\amd64):        extern  KeBugCheckEx:proc
+Callout.asm (base\ntos\ke\amd64):        call    KeBugCheckEx            ; bugcheck system - no return
+Ctxswap.asm (base\ntos\ke\amd64):        extern  KeBugCheckEx:proc
+Ctxswap.asm (base\ntos\ke\amd64):        call    KeBugCheckEx            ; bugcheck system - no return
+Exceptn.c (base\ntos\ke\amd64):        KeBugCheckEx(KMODE_EXCEPTION_NOT_HANDLED,
+Exceptn.c (base\ntos\ke\amd64):            KeBugCheckEx(KMODE_EXCEPTION_NOT_HANDLED,
+Initkr.c (base\ntos\ke\amd64):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED,
+Initkr.c (base\ntos\ke\amd64):    KeBugCheckEx(PHASE0_EXCEPTION, Code, (ULONG64)Pointers, 0, 0);
+Initkr.c (base\ntos\ke\amd64):        KeBugCheckEx(UNSUPPORTED_PROCESSOR, InformationStandard.Edx, 0, 0, 0);
+Procstat.asm (base\ntos\ke\amd64):        call KeBugCheckEx               ; bugcheck system - not return
+Procstat.asm (base\ntos\ke\amd64):;   This routine differs from KeBugCheckEx in that the fourth bugcheck
+Procstat.asm (base\ntos\ke\amd64):        call    KeBugCheckEx            ; bugcheck system - not return
+Procstat.asm (base\ntos\ke\amd64):; KeBugCheckEx (
+Procstat.asm (base\ntos\ke\amd64):        NESTED_ENTRY KeBugCheckEx, _TEXT$00
+Procstat.asm (base\ntos\ke\amd64):KeBC10: lea     r8, (sizeof BeFrame)[rsp] ; calculate rsp at entry of KeBugCheckEx
+Procstat.asm (base\ntos\ke\amd64):        lea     r9, KeBugCheckEx        ; get the entry point of KeBugCheckEx
+Procstat.asm (base\ntos\ke\amd64):        NESTED_END KeBugCheckEx, _TEXT$00
+Trap.asm (base\ntos\ke\amd64):        extern  KeBugCheckEx:proc
+Trap.asm (base\ntos\ke\amd64):        call    KeBugCheckEx            ; bugcheck system - not return
+Ctxswap.asm (base\ntos\ke\i386):        EXTRNP  _KeBugCheckEx,5
+Ctxswap.asm (base\ntos\ke\i386):        stdCall _KeBugCheckEx <ATTEMPTED_SWITCH_FROM_DPC, edi, esi, eax, 0>
+Exceptn.c (base\ntos\ke\i386):            KeBugCheckEx(SET_OF_INVALID_CONTEXT,
+Exceptn.c (base\ntos\ke\i386):        KeBugCheckEx(
+Exceptn.c (base\ntos\ke\i386):            KeBugCheckEx(
+Intsup.asm (base\ntos\ke\i386):        EXTRNP  _KeBugCheckEx,5
+Intsup.asm (base\ntos\ke\i386):        stdCall _KeBugCheckEx, <HARDWARE_INTERRUPT_STORM, [edi].InServiceRoutine, [edi].InServiceContext, edi, BugCheckID>
+Kernlini.c (base\ntos\ke\i386):        KeBugCheckEx(UNSUPPORTED_PROCESSOR,0x386,0,0,0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(UNSUPPORTED_PROCESSOR,
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED, KF_FXSR, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED, KF_XMMI, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED, 0x387, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED, KF_CMPXCHG8B, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED, KF_GLOBAL_PAGE, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED, KF_PAT, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED, KF_MTRR, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED,
+Kernlini.c (base\ntos\ke\i386):    } except(KeBugCheckEx(PHASE0_EXCEPTION,
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(NO_PAGES_AVAILABLE, 1, 0, 0, 0);
+Kernlini.c (base\ntos\ke\i386):            KeBugCheckEx(NO_PAGES_AVAILABLE, 2, PAGE_SIZE * 2, 0, 0);
+Kernlini.c (base\ntos\ke\i386):                    KeBugCheckEx(MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED,
+Misc.c (base\ntos\ke\i386):        KeBugCheckEx(INVALID_FLOATING_POINT_STATE,
+Misc.c (base\ntos\ke\i386):        KeBugCheckEx(INVALID_FLOATING_POINT_STATE,
+Misc.c (base\ntos\ke\i386):        KeBugCheckEx(INVALID_FLOATING_POINT_STATE,
+Spindbg.asm (base\ntos\ke\i386):        EXTRNP  _KeBugCheckEx,5
+Spindbg.asm (base\ntos\ke\i386):        stdCall _KeBugCheckEx,<SPIN_LOCK_ALREADY_OWNED,eax,0,0,0>
+Spinlock.asm (base\ntos\ke\i386):        EXTRNP  _KeBugCheckEx,5
+Spinlock.asm (base\ntos\ke\i386):asld50: stdCall   _KeBugCheckEx,<IRQL_NOT_GREATER_OR_EQUAL,ecx,eax,0,0>
+Spinlock.asm (base\ntos\ke\i386):        ; KeBugCheckEx(SPIN_LOCK_ALREADY_OWNED,
+Spinlock.asm (base\ntos\ke\i386):        stdCall _KeBugCheckEx,<SPIN_LOCK_ALREADY_OWNED,edx,ecx,eax,2>
+Spinlock.asm (base\ntos\ke\i386):        stdCall _KeBugCheckEx,<SPIN_LOCK_NOT_OWNED,ecx,eax,0,0>
+Allocpag.c (base\ntos\mm):            KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):                KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):                KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):            KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):        KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Allocpag.c (base\ntos\mm):        KeBugCheckEx (SESSION_HAS_VALID_POOL_ON_EXIT,
+Allocpag.c (base\ntos\mm):            KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):                KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):                KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):            KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):        KeBugCheckEx (BAD_POOL_CALLER,
+Allocpag.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Allocvm.c (base\ntos\mm):                KeBugCheckEx (DRIVER_UNMAPPING_INVALID_VIEW,
+Deleteva.c (base\ntos\mm):                    KeBugCheckEx (MEMORY_MANAGEMENT,
+Deleteva.c (base\ntos\mm):                            KeBugCheckEx (MEMORY_MANAGEMENT,
+Deleteva.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Deleteva.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Deleteva.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Deleteva.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Flushsec.c (base\ntos\mm):                    KeBugCheckEx (POOL_CORRUPTION_IN_FILE_AREA,
+Forksup.c (base\ntos\mm):                                KeBugCheckEx (MEMORY_MANAGEMENT,
+Forksup.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (LOCKED_PAGES_TRACKER_CORRUPTION,
+Iosup.c (base\ntos\mm):                KeBugCheckEx (LOCKED_PAGES_TRACKER_CORRUPTION,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (PROCESS_HAS_LOCKED_PAGES,
+Iosup.c (base\ntos\mm):                KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):                KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):                    KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):                    KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):                    KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):    KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Iosup.c (base\ntos\mm):                    KeBugCheckEx (ATTEMPTED_WRITE_TO_READONLY_MEMORY,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (BAD_POOL_CALLER,
+Iosup.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Iosup.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Mapcache.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Mapcache.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Mapcache.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Mapcache.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Mapview.c (base\ntos\mm):                KeBugCheckEx (DRIVER_UNMAPPING_INVALID_VIEW,
+Mapview.c (base\ntos\mm):        KeBugCheckEx (SESSION_HAS_VALID_VIEWS_ON_EXIT,
+Mi.h (base\ntos\mm):                    KeBugCheckEx (PFN_LIST_CORRUPT, 0x99, FRAME, (PFN)->u3.e1.PageLocation, 0);                                                         \
+Mmfault.c (base\ntos\mm):        KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mmfault.c (base\ntos\mm):                KeBugCheckEx (ATTEMPTED_EXECUTE_OF_NOEXECUTE_MEMORY,
+Mmfault.c (base\ntos\mm):                KeBugCheckEx (ATTEMPTED_WRITE_TO_READONLY_MEMORY,
+Mmfault.c (base\ntos\mm):            KeBugCheckEx (ATTEMPTED_EXECUTE_OF_NOEXECUTE_MEMORY,
+Mmfault.c (base\ntos\mm):            KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mmfault.c (base\ntos\mm):            KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mmfault.c (base\ntos\mm):                    KeBugCheckEx (ATTEMPTED_EXECUTE_OF_NOEXECUTE_MEMORY,
+Mmfault.c (base\ntos\mm):                KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mmfault.c (base\ntos\mm):                        KeBugCheckEx (ATTEMPTED_WRITE_TO_READONLY_MEMORY,
+Mmfault.c (base\ntos\mm):                        KeBugCheckEx (ATTEMPTED_EXECUTE_OF_NOEXECUTE_MEMORY,
+Mmfault.c (base\ntos\mm):                KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mmfault.c (base\ntos\mm):                        KeBugCheckEx (ATTEMPTED_WRITE_TO_READONLY_MEMORY,
+Mmfault.c (base\ntos\mm):                KeBugCheckEx (ATTEMPTED_EXECUTE_OF_NOEXECUTE_MEMORY,
+Mmfault.c (base\ntos\mm):                    KeBugCheckEx (ATTEMPTED_WRITE_TO_READONLY_MEMORY,
+Mmfault.c (base\ntos\mm):                KeBugCheckEx (DRIVER_CAUGHT_MODIFYING_FREED_POOL,
+Mmfault.c (base\ntos\mm):            KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mmfault.c (base\ntos\mm):            KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mmfault.c (base\ntos\mm):                KeBugCheckEx (ATTEMPTED_WRITE_TO_READONLY_MEMORY,
+Mmfault.c (base\ntos\mm):            KeBugCheckEx (PAGE_FAULT_IN_NONPAGED_AREA,
+Mminit.c (base\ntos\mm):            KeBugCheckEx (INSTALL_MORE_MEMORY,
+Mminit.c (base\ntos\mm):            KeBugCheckEx (INSTALL_MORE_MEMORY,
+Mmsup.c (base\ntos\mm):            KeBugCheckEx (KERNEL_DATA_INPAGE_ERROR,
+Mmsup.c (base\ntos\mm):            KeBugCheckEx (KERNEL_DATA_INPAGE_ERROR,
+Mmsup.c (base\ntos\mm):            KeBugCheckEx (KERNEL_DATA_INPAGE_ERROR,
+Mmsup.c (base\ntos\mm):            KeBugCheckEx (KERNEL_DATA_INPAGE_ERROR,
+Modwrite.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Pagfault.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT, 0x777,(ULONG_PTR)Mdl, (ULONG_PTR)Subsection,
+Pagfault.c (base\ntos\mm):                    KeBugCheckEx (KERNEL_DATA_INPAGE_ERROR,
+Pagfault.c (base\ntos\mm):                            KeBugCheckEx (KERNEL_DATA_INPAGE_ERROR,
+Pagfault.c (base\ntos\mm):                    KeBugCheckEx (KERNEL_DATA_INPAGE_ERROR,
+Pagfault.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Pagfault.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Pagfault.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Pagfault.c (base\ntos\mm):                    KeBugCheckEx (MEMORY_MANAGEMENT,
+Pagfault.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Pagfault.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Pagfault.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Pfndec.c (base\ntos\mm):            KeBugCheckEx (PFN_LIST_CORRUPT,
+Pfndec.c (base\ntos\mm):        KeBugCheckEx (PFN_LIST_CORRUPT,
+Pfndec.c (base\ntos\mm):    KeBugCheckEx (PFN_LIST_CORRUPT,
+Pfnlist.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT, 0x8888, 0,0,0);
+Pfnlist.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT, 0x8889, 0,0,0);
+Pfnlist.c (base\ntos\mm):        KeBugCheckEx (PFN_LIST_CORRUPT, 1, (ULONG_PTR)ListHead, MmAvailablePages, 0);
+Pfnlist.c (base\ntos\mm):        KeBugCheckEx (PFN_LIST_CORRUPT,
+Pfnlist.c (base\ntos\mm):        KeBugCheckEx (BugcheckCode,
+Procsup.c (base\ntos\mm):                KeBugCheckEx (DRIVER_LEFT_LOCKED_PAGES_IN_PROCESS,
+Procsup.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Procsup.c (base\ntos\mm):        KeBugCheckEx (KERNEL_STACK_INPAGE_ERROR,
+Procsup.c (base\ntos\mm):            KeBugCheckEx (MEMORY_MANAGEMENT,
+Procsup.c (base\ntos\mm):                KeBugCheckEx (KERNEL_STACK_INPAGE_ERROR,
+Procsup.c (base\ntos\mm):            KeBugCheckEx (KERNEL_STACK_INPAGE_ERROR,
+Sectsup.c (base\ntos\mm):                KeBugCheckEx (POOL_CORRUPTION_IN_FILE_AREA,
+Sectsup.c (base\ntos\mm):                    KeBugCheckEx (POOL_CORRUPTION_IN_FILE_AREA,
+Sectsup.c (base\ntos\mm):                    KeBugCheckEx (POOL_CORRUPTION_IN_FILE_AREA,
+Sectsup.c (base\ntos\mm):                        KeBugCheckEx (POOL_CORRUPTION_IN_FILE_AREA,
+Session.c (base\ntos\mm):        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Sessload.c (base\ntos\mm):        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Sysload.c (base\ntos\mm):                            KeBugCheckEx (MEMORY_MANAGEMENT,
+Sysptes.c (base\ntos\mm):            KeBugCheckEx (DRIVER_USED_EXCESSIVE_PTES,
+Sysptes.c (base\ntos\mm):    KeBugCheckEx (NO_MORE_SYSTEM_PTES,
+Sysptes.c (base\ntos\mm):                        KeBugCheckEx (MEMORY_MANAGEMENT,
+Sysptes.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):            KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):            KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):                KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):        KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Sysptes.c (base\ntos\mm):            KeBugCheckEx (SYSTEM_PTE_MISUSE,
+Wslist.c (base\ntos\mm):                    KeBugCheckEx (MEMORY_MANAGEMENT,
+Wslist.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Wstree.c (base\ntos\mm):    KeBugCheckEx (MEMORY_MANAGEMENT,
+Wstree.c (base\ntos\mm):        KeBugCheckEx (MEMORY_MANAGEMENT,
+Wstree.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Wstree.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Wstree.c (base\ntos\mm):                KeBugCheckEx (MEMORY_MANAGEMENT,
+Zeropage.c (base\ntos\mm):                        KeBugCheckEx (PFN_LIST_CORRUPT,
+Zeropage.c (base\ntos\mm):                        KeBugCheckEx (PFN_LIST_CORRUPT,
+Zeropage.c (base\ntos\mm):                    KeBugCheckEx (PFN_LIST_CORRUPT,
+Zeropage.c (base\ntos\mm):                    KeBugCheckEx (PFN_LIST_CORRUPT,
+Initamd.c (base\ntos\mm\amd64):        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):            KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):        KeBugCheckEx(INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                    KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                    KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                    KeBugCheckEx (INSTALL_MORE_MEMORY,
+Initamd.c (base\ntos\mm\amd64):                    KeBugCheckEx (INSTALL_MORE_MEMORY,
+Init386.c (base\ntos\mm\i386):        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Init386.c (base\ntos\mm\i386):                        KeBugCheckEx (INSTALL_MORE_MEMORY,
+Obclose.c (base\ntos\ob):            KeBugCheckEx(INVALID_KERNEL_HANDLE, (ULONG_PTR)Handle, 0, 0, 0);
+Obclose.c (base\ntos\ob):                        KeBugCheckEx(INVALID_KERNEL_HANDLE, (ULONG_PTR)Handle, 1, 0, 0);
+Create.c (base\ntos\ps):    KeBugCheckEx(
+Psdelete.c (base\ntos\ps):        KeBugCheckEx(CRITICAL_OBJECT_TERMINATION,
+Psdelete.c (base\ntos\ps):        KeBugCheckEx (INVALID_PROCESS_ATTACH_ATTEMPT,
+Psdelete.c (base\ntos\ps):        KeBugCheckEx (ACTIVE_EX_WORKER_THREAD_TERMINATION,
+Psdelete.c (base\ntos\ps):        KeBugCheckEx (KERNEL_APC_PENDING_DURING_EXIT,
+Psdelete.c (base\ntos\ps):            KeBugCheckEx (CRITICAL_PROCESS_DIED,
+Psdelete.c (base\ntos\ps):        KeBugCheckEx (KERNEL_STACK_LOCKED_AT_EXIT, 0, 0, 0, 0);
+Psdelete.c (base\ntos\ps):        KeBugCheckEx (KERNEL_APC_PENDING_DURING_EXIT,
+Psinit.c (base\ntos\ps):        KeBugCheckEx(UNEXPECTED_INITIALIZATION_CALL, 1, InitializationPhase, 0, 0);
+Psinit.c (base\ntos\ps):        KeBugCheckEx (PROCESS_INITIALIZATION_FAILED, 99, sizeof (TEB), sizeof (PEB), 99);
+Psinit.c (base\ntos\ps):        KeBugCheckEx (PROCESS1_INITIALIZATION_FAILED, st, 2, 0, 0);
+Psinit.c (base\ntos\ps):        KeBugCheckEx (PROCESS1_INITIALIZATION_FAILED, st, 3, 0, 0);
+Psinit.c (base\ntos\ps):        KeBugCheckEx(PROCESS1_INITIALIZATION_FAILED,st,4,0,0);
+Psinit.c (base\ntos\ps):            KeBugCheckEx (PROCESS1_INITIALIZATION_FAILED, st, 5, 0, 0);
+Psinit.c (base\ntos\ps):        KeBugCheckEx (PROCESS1_INITIALIZATION_FAILED, st, 6, 0, 0);
+Psinit.c (base\ntos\ps):        KeBugCheckEx(PROCESS1_INITIALIZATION_FAILED,st,8,0,0);
+Rawdisp.c (base\ntos\raw):                KeBugCheckEx( FILE_SYSTEM, 0, 0, 0, 0 );
+Exdsptch.c (base\ntos\rtl\amd64):        KeBugCheckEx(DRIVER_VERIFIER_DETECTED_VIOLATION,
+Adtlog.c (base\ntos\se):    KeBugCheckEx(STATUS_AUDIT_FAILED, AuditStatus, 0, 0, 0);
+Rmlogon.c (base\ntos\se):    KeBugCheckEx( DEREF_UNKNOWN_LOGON_SESSION, 0, 0, 0, 0 );
+Seinit.c (base\ntos\se):        KeBugCheckEx(UNEXPECTED_INITIALIZATION_CALL, 0, InitializationPhase, 0, 0);
+Semethod.c (base\ntos\se):        KeBugCheckEx( SECURITY_SYSTEM, 0, STATUS_INVALID_PARAMETER, 0, 0 );
+Secure.c (base\ntos\wmi):        KeBugCheckEx( SECURITY_SYSTEM, 1, (ULONG_PTR) STATUS_INVALID_PARAMETER, 0, 0 );
+Bugcodes.txt (public\internal\base\inc):KeBugCheckEx parameters;
+Bugcodes.txt (public\internal\base\inc):timeout condition then DbgBreakPoint() will be called instead of KeBugCheckEx()
+Bugcodes.txt (public\internal\base\inc):KeBugCheckEx() is not called the .bugcheck directive will not return bugcheck
+Bugcodes.txt (public\internal\base\inc):timeout condition then DbgBreakPoint() will be called instead of KeBugCheckEx()
+Bugcodes.txt (public\internal\base\inc):KeBugCheckEx() is not called the .bugcheck directive will not return bugcheck
