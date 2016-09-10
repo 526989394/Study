@@ -1,0 +1,325 @@
+NTSTATUS KeGetKeyValue(_In_ HANDLE parentPath,
+	_In_ PCWCHAR SubKeyPath,
+	_In_ PCWCHAR ValueName,
+	_Inout_ PULONG Type,
+	_Out_ PVOID * ValueData,
+	_Out_ PULONG ValueDataLength)
+{
+
+	/*++
+
+		Routine Description:
+
+			获取一个指定注册表键的值数据
+
+		Arguments:
+
+			parentPath - 目标键的父目录句柄，可为NULL
+			SubKeyPath - 子健路径，若parentPath 为NULL，必须为全路径
+			ValueName - 目标值名
+			Type - 输入输出参数，值数据类型
+			ValueData - 值数据（内存为函数内部申请，外部使用完毕后需自行释放）
+			ValueDataLength - 返回值数据长度
+
+		Return Value:
+
+			status
+
+	--*/
+
+	NTSTATUS					status = STATUS_SUCCESS;
+	HANDLE						hRegKey = NULL;
+	UNICODE_STRING				usSubKeyPath = { 0 };
+
+
+	RtlInitUnicodeString(&usSubKeyPath, SubKeyPath);
+
+	status = KeRegOpenKey(parentPath, &usSubKeyPath, KEY_READ, &hRegKey);
+	if (NT_SUCCESS(status) && hRegKey)
+	{
+		GetValueDataCtx gvdc = { 0 };
+		gvdc.ValueData = ValueData;
+		gvdc.ValueDataLength = ValueDataLength;
+		gvdc.ValueName = ValueName;
+		gvdc.Type = Type;
+		status = KeEnumKeyValue(hRegKey, KeyValueFullInformation, KeyValueCallBack_GetValueData, &gvdc);
+		ZwClose(hRegKey);
+	}
+	return status;
+}
+
+
+NTSTATUS GetDeviceFirendlyName(PDEVICE_OBJECT pDeviceObj/*_In_ WCHAR VolumeDosname*/, _Out_ WCHAR * DevFirendLyName, _In_ ULONG Size)
+{
+
+	/*++
+
+		Routine Description:
+
+			获取一个逻辑卷所属的物理设备的名字
+
+		Arguments:
+
+			VolumeDosName - 卷dos名
+			DevFirendLyName - 返回获取到的名字
+			Size - 接受的缓冲区长度
+
+		Return Value:
+
+			status
+
+	--*/
+
+#define IOCTL_DISK_BASE                 FILE_DEVICE_DISK
+#define IOCTL_DISK_GET_PARTITION_INFO   CTL_CODE(IOCTL_DISK_BASE, 0x0001, METHOD_BUFFERED, FILE_READ_ACCESS)
+#define IOCTL_DISK_GET_DRIVE_LAYOUT     CTL_CODE(IOCTL_DISK_BASE, 0x0003, METHOD_BUFFERED, FILE_READ_ACCESS)
+
+	//
+	// The following structure is returned on an IOCTL_DISK_GET_PARTITION_INFO
+	// and an IOCTL_DISK_GET_DRIVE_LAYOUT request.  It is also used in a request
+	// to change the drive layout, IOCTL_DISK_SET_DRIVE_LAYOUT.
+	//
+
+	typedef struct _PARTITION_INFORMATION {
+		LARGE_INTEGER StartingOffset;
+		LARGE_INTEGER PartitionLength;
+		ULONG HiddenSectors;
+		ULONG PartitionNumber;
+		UCHAR  PartitionType;
+		BOOLEAN BootIndicator;
+		BOOLEAN RecognizedPartition;
+		BOOLEAN RewritePartition;
+	} PARTITION_INFORMATION, *PPARTITION_INFORMATION;
+
+	//
+	// The following structures is returned on an IOCTL_DISK_GET_DRIVE_LAYOUT
+	// request and given as input to an IOCTL_DISK_SET_DRIVE_LAYOUT request.
+	//
+
+	typedef struct _DRIVE_LAYOUT_INFORMATION {
+		ULONG PartitionCount;
+		ULONG Signature;
+		PARTITION_INFORMATION PartitionEntry[1];
+	} DRIVE_LAYOUT_INFORMATION, *PDRIVE_LAYOUT_INFORMATION;
+
+
+	NTSTATUS							status = STATUS_SUCCESS;
+//	WCHAR								wcVolumeDosName[] = L"\\DosDevices\\X:";
+//	UNICODE_STRING						usVolumeDosname = { 0 };
+	OBJECT_ATTRIBUTES					ObjectAttributes = { 0 };
+//	HANDLE								VolumeHandle = NULL;
+	IO_STATUS_BLOCK						IoStatus = { 0 };
+	PARTITION_INFORMATION				DestPartInfo = { 0 };
+	ULONG								uDiskCount = 0;
+	ULONG								uDiskBufferSize = sizeof(DRIVE_LAYOUT_INFORMATION)+sizeof(PARTITION_INFORMATION)* 104;//26*4     
+	PDRIVE_LAYOUT_INFORMATION			pDiskPartInfo = NULL;
+
+	__try
+	{
+
+		{
+			KEVENT Event;
+			PIRP pIrp = NULL;
+
+			KeInitializeEvent(&Event, SynchronizationEvent, FALSE);
+
+			pIrp = IoBuildDeviceIoControlRequest(IOCTL_DISK_GET_PARTITION_INFO,
+				pDeviceObj,
+				NULL,
+				0,
+				&DestPartInfo,
+				sizeof(PARTITION_INFORMATION),
+				FALSE,
+				&Event,
+				&IoStatus);
+
+			status = IoCallDriver(pDeviceObj, pIrp);
+			if (status == STATUS_PENDING)
+			{
+				KeWaitForSingleObject(&Event, Executive, KernelMode, FALSE, NULL);
+			}
+		}
+		//wcVolumeDosName[wcslen(L"\\DosDevices\\")] = VolumeDosname;
+
+		//RtlInitUnicodeString(&usVolumeDosname, wcVolumeDosName);
+
+		//InitializeObjectAttributes(&ObjectAttributes,
+		//	&usVolumeDosname,
+		//	OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE,
+		//	NULL,
+		//	NULL);
+
+		//status = ZwCreateFile(&VolumeHandle,
+		//	GENERIC_READ,
+		//	&ObjectAttributes,
+		//	&IoStatus,
+		//	NULL,
+		//	FILE_ATTRIBUTE_NORMAL,
+		//	0, FILE_OPEN,
+		//	0,
+		//	NULL,
+		//	0);
+		//if (!NT_SUCCESS(status))
+		//	__leave;
+
+		//status = ZwDeviceIoControlFile(VolumeHandle,
+		//	NULL,
+		//	NULL,
+		//	NULL,
+		//	&IoStatus,
+		//	IOCTL_DISK_GET_PARTITION_INFO,
+		//	NULL,
+		//	0,
+		//	&DestPartInfo,
+		//	sizeof(PARTITION_INFORMATION));
+
+		//if (VolumeHandle)
+		//	ZwClose(VolumeHandle);
+
+		if (!NT_SUCCESS(status))
+			__leave;
+
+		{
+			PVOID pValue = NULL;
+			status = KeGetKeyValue(NULL, L"\\Registry\\Machine\\SYSTEM\\CurrentControlSet\\Services\\Disk\\Enum", L"Count", NULL, &pValue, NULL);
+			if (NT_SUCCESS(status))
+			{
+				uDiskCount = *(ULONG *)pValue;
+				ExFreePool(pValue);
+			}
+		}
+
+		pDiskPartInfo = ExAllocatePool(PagedPool, uDiskBufferSize);
+		if (pDiskPartInfo == NULL)
+		{
+			status = STATUS_INSUFFICIENT_RESOURCES;
+			__leave;
+		}
+
+		ULONG uIndex = 0;
+		for (uIndex = 0; uIndex < uDiskCount; uIndex++)
+		{
+			WCHAR wcPhysicalDrive[sizeof("\\DosDevices\\PHYSICALDRIVEX")] = { 0 };
+			UNICODE_STRING usPhysicalDrive = { 0 };
+			HANDLE   hDiskDevice = NULL;
+
+			status = RtlStringCbPrintfExW(wcPhysicalDrive,
+				sizeof(wcPhysicalDrive),
+				NULL, NULL, STRSAFE_FILL_BEHIND_NULL, L"\\DosDevices\\PHYSICALDRIVE%d",
+				uIndex);
+			if (NT_SUCCESS(status))
+			{
+				RtlInitUnicodeString(&usPhysicalDrive, wcPhysicalDrive);
+
+				InitializeObjectAttributes(&ObjectAttributes,
+					&usPhysicalDrive,
+					OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE,
+					NULL,
+					NULL);
+
+				status = ZwCreateFile(&hDiskDevice,
+					GENERIC_READ,
+					&ObjectAttributes,
+					&IoStatus,
+					NULL,
+					FILE_ATTRIBUTE_NORMAL,
+					FILE_SHARE_WRITE, FILE_OPEN,
+					FILE_SYNCHRONOUS_IO_ALERT,
+					NULL,
+					0);
+				if (NT_SUCCESS(status))
+				{
+					RtlZeroMemory(pDiskPartInfo, uDiskBufferSize);
+
+					status = ZwDeviceIoControlFile(hDiskDevice,
+						NULL,
+						NULL,
+						NULL,
+						&IoStatus,
+						IOCTL_DISK_GET_DRIVE_LAYOUT,
+						NULL,
+						0,
+						pDiskPartInfo,
+						uDiskBufferSize);
+
+					if (NT_SUCCESS(status))
+					{
+						ULONG ui = 0;
+						for (ui = 0; ui < pDiskPartInfo->PartitionCount; ui++)
+						{
+							PARTITION_INFORMATION   DiskPartInfo = pDiskPartInfo->PartitionEntry[ui];
+							if ((DiskPartInfo.StartingOffset.QuadPart == DestPartInfo.StartingOffset.QuadPart)
+								&& (DiskPartInfo.PartitionLength.QuadPart == DestPartInfo.PartitionLength.QuadPart)
+								&& (DiskPartInfo.HiddenSectors == DestPartInfo.HiddenSectors)
+								&& (DiskPartInfo.PartitionNumber == DestPartInfo.PartitionNumber)
+								&& (DiskPartInfo.PartitionType == DestPartInfo.PartitionType)
+								&& (DiskPartInfo.BootIndicator == DestPartInfo.BootIndicator)
+								&& (DiskPartInfo.RecognizedPartition == DestPartInfo.RecognizedPartition)
+								&& (DiskPartInfo.RewritePartition == DestPartInfo.RewritePartition))
+							{
+								PVOID pValue = NULL;
+								WCHAR wcDiskIndex[sizeof("XX")] = { 0 };
+
+
+								status = RtlStringCbPrintfExW(wcDiskIndex,
+									sizeof(wcDiskIndex),
+									NULL, NULL, STRSAFE_FILL_BEHIND_NULL, L"%d",
+									uIndex);
+
+								status = KeGetKeyValue(NULL, L"\\Registry\\Machine\\SYSTEM\\CurrentControlSet\\Services\\Disk\\Enum", wcDiskIndex, NULL, &pValue, NULL);
+								if (NT_SUCCESS(status))
+								{
+									PWCHAR pwcDiskName = pValue;
+
+									PWCHAR pType = mestrstr(pwcDiskName, wcslen(pwcDiskName), L"\\", wcslen(L"\\"));
+									PWCHAR pVen_ = mestrstr(pwcDiskName, wcslen(pwcDiskName), L"&Ven_", wcslen(L"&Ven_"));
+									PWCHAR pProd_ = mestrstr(pwcDiskName, wcslen(pwcDiskName), L"&Prod_", wcslen(L"&Prod_"));
+									if (pVen_ && pProd_ && pType)
+									{
+										PWCHAR pEnd = mestrstr(pProd_ + 1, wcslen(pProd_), L"&", wcslen(L"&"));
+										if (pEnd == NULL)
+										{
+											pEnd = mestrstr(pProd_, wcslen(pProd_), L"\\", wcslen(L"\\"));
+										}
+
+										if (pEnd)
+										{
+											ULONG_PTR uVen_ = (ULONG_PTR)pProd_ - (ULONG_PTR)&pVen_[wcslen(L"&Ven_")];
+											ULONG_PTR uProd_ = (ULONG_PTR)pEnd - (ULONG_PTR)&pProd_[wcslen(L"&Prod_")];
+											ULONG_PTR uType = (ULONG_PTR)pType - (ULONG_PTR)pwcDiskName;
+
+											if (Size > uVen_ + uProd_ + sizeof(WCHAR)* 2)
+											{
+												RtlZeroMemory(DevFirendLyName, Size);
+												RtlCopyMemory(DevFirendLyName, &pVen_[wcslen(L"&Ven_")], uVen_);
+												DevFirendLyName[uVen_ / sizeof(WCHAR)] = L' ';
+												RtlCopyMemory(&DevFirendLyName[uVen_ / sizeof(WCHAR)+1], &pProd_[wcslen(L"&Prod_")], uProd_);
+												DevFirendLyName[(uVen_ + uProd_) / sizeof(WCHAR)+1] = L' ';
+												RtlCopyMemory(&DevFirendLyName[(uVen_ + uProd_) / sizeof(WCHAR)+2], pwcDiskName, uType);
+												ExFreePool(pValue);
+												__leave;
+											}
+										}
+									}
+
+									ExFreePool(pValue);
+								}
+							}
+						}
+					}
+					ZwClose(hDiskDevice);
+				}
+			}
+
+		}
+
+
+	}
+	__finally
+	{
+		if (pDiskPartInfo)
+			ExFreePool(pDiskPartInfo);
+	}
+
+	return status;
+}

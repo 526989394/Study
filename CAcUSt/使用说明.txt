@@ -1,0 +1,6 @@
+将这几个文件添加到VC工程中，#include 一下UString.h头文件就可以使用里面的CUString类了
+CUString内部维护者一个私用的字符串缓冲，最好不要引用外部的缓冲，否则，可能触发异常！
+典型用法：
+CUString ustr=L"hello";
+ustr+=L"_world";
+ustr.Find("ll")
